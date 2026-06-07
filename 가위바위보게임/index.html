@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<title>가위바위보 게임</title>
+<style>
+body{font-family:Arial;text-align:center;margin-top:50px}
+button{font-size:20px;padding:10px 20px;margin:5px}
+#result{margin-top:20px;font-size:24px}
+</style>
+</head>
+<body>
+<h1>가위바위보 게임</h1>
+<button onclick="play('가위')">가위</button>
+<button onclick="play('바위')">바위</button>
+<button onclick="play('보')">보</button>
+<div id="result"></div>
+
+<script>
+function play(user){
+ const arr=['가위','바위','보'];
+ const com=arr[Math.floor(Math.random()*3)];
+ let r='';
+ if(user===com) r='무승부!';
+ else if(
+ (user==='가위'&&com==='보')||
+ (user==='바위'&&com==='가위')||
+ (user==='보'&&com==='바위')
+ ) r='승리!';
+ else r='패배!';
+ document.getElementById('result').innerHTML =
+ `나: ${user}<br>컴퓨터: ${com}<br><b>${r}</b>`;
+}
+</script>
+</body>
+</html>
